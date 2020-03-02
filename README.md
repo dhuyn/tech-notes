@@ -20,6 +20,7 @@ CONS:
 - Deep drilling multiple props becomes even more annoying.
 - Creates coupling for components that would otherwise be decoupled. Difficult to reuse or refactor.
 
+
 ### Children Pattern
 https://twitter.com/dan_abramov/status/1021850499618955272
 
@@ -60,14 +61,13 @@ const Body = ({ sidebar, content }) => (
 >This inversion of control can make your code cleaner in many cases by reducing the amount of props you need to pass through your application and giving more control to the root components. However, this isn’t the right choice in every case: moving more complexity higher in the tree makes those higher-level components more complicated and forces the lower-level components to be more flexible than you may want.
 
 
-
-Both solve `prop drilling` in their own way.
-
 ### Redux
 https://daveceddia.com/redux-tutorial/
 
 #### Redux without React
-`import { createStore } from "redux";`  
+```jsx
+import { createStore } from "redux";
+```  
 `createStore()`  
 Redux has one store. Initialize and return it with the `createStore(reducer)` function.
 
@@ -81,7 +81,9 @@ Redux has one store. Initialize and return it with the `createStore(reducer)` fu
 `store.dispatch(action)` is used to execute an action on a state. It does this by directly calling the `reducer()` function.
 
 #### Redux with React
-`import { connect, Provider } from "react-redux";`  
+```jsx
+import { connect, Provider } from "react-redux";
+```  
 `connect()`  
 Connect a React Component to Redux state with this HOC by calling `export default connect(mapStateToProps)(Component)`. It pulls out the entire Redux state and passes that through to `mapStateToProps`. Then it returns a function that takes in a React Component which is now wrapped with the modified Redux state.
 
@@ -235,5 +237,5 @@ const store = createStore(
 `thunks`  
 Uncommon name for the function that is returned from a function. Used in an `action creator` to return a function that executes an API call or other statements instead of the `action` object.
 
-TODO: continue with uses for thunks
+Allows an `action creator` to return a function instead of an action. You'll want to do this in order to delay the action or to return it conditionally.
 
