@@ -68,16 +68,16 @@ https://daveceddia.com/redux-tutorial/
 ```jsx
 import { createStore } from "redux";
 ```  
-**createStore()**  
+`createStore()`  
 Redux has one store. Initialize and return it with the `createStore(reducer)` function.
 
-**reducer()**  
+`reducer()`  
 `createStore()` must take in a reducer. Reducer is a user-defined function that takes in a `state` and `action` and returns a new state.
 
-**action**  
+`action`  
 `action`s are JS objects that have a `type` to describe the action.
 
-**dispatch()**  
+`dispatch`  
 `store.dispatch(action)` is used to execute an action on a state. It does this by directly calling the `reducer()` function.
 
 #### Redux with React
