@@ -67,28 +67,28 @@ Both solve `prop drilling` in their own way.
 https://daveceddia.com/redux-tutorial/
 
 #### Redux without React
-`import { createStore } from "redux";`
-`createStore()`
+`import { createStore } from "redux";`  
+`createStore()`  
 Redux has one store. Initialize and return it with the `createStore(reducer)` function.
 
-`reducer()`
+`reducer()`  
 `createStore()` must take in a reducer. Reducer is a user-defined function that takes in a `state` and `action` and returns a new state.
 
-`action`
+`action`  
 `action`s are JS objects that have a `type` to describe the action.
 
-`dispatch()`
+`dispatch()`  
 `store.dispatch(action)` is used to execute an action on a state. It does this by directly calling the `reducer()` function.
 
 #### Redux with React
-`import { connect, Provider } from "react-redux";`
-`connect()`
+`import { connect, Provider } from "react-redux";`  
+`connect()`  
 Connect a React Component to Redux state with this HOC by calling `export default connect(mapStateToProps)(Component)`. It pulls out the entire Redux state and passes that through to `mapStateToProps`. Then it returns a function that takes in a React Component which is now wrapped with the modified Redux state.
 
-`mapStateToProps()`
+`mapStateToProps()`  
 This is a user-defined function that turns the global Redux state into props that the wrapped function requires. Obviously, you should only get props that are truly needed from the Redux state.
 
-`dispatch()`
+`dispatch()`  
 `connect()` not only passes Redux state to the wrapped component, it also passes the store's `dispatch()` function. In the wrapped component, import the defined `action`s and call `dispatch()` on them in order to update the Redux state.
 
 ```jsx
@@ -212,10 +212,10 @@ ReactDOM.render(
 ```
 
 #### Optional Redux with React
-`action creator function`
+`action creator function`  
 Action creator is a function that returns an `action` object. It is suggested that this can be cleaner in larger code bases, but I think the real use is to be able to use `mapDispatchToProps`. Instead of using `this.props.dispatch({type: ACTION})`, use `this.props.dispatch(action())`
 
-`mapDispatchToProps`
+`mapDispatchToProps`  
 A user-defined object whose keys and values are the same name as the user-defined `action creator function`s. By calling `export default connect(mapStateToProps, mapDispatchToProps)(Component)`, the function props are passed to the wrapped component. This allows you to avoid using `this.props.dispatch()` and instead use `this.props.action()`.
 
 #### Redux Middleware
@@ -232,7 +232,7 @@ const store = createStore(
   applyMiddleware(thunk)
 );
 ```
-`thunks`
+`thunks`  
 Uncommon name for the function that is returned from a function. Used in an `action creator` to return a function that executes an API call or other statements instead of the `action` object.
 
 TODO: continue with uses for thunks
